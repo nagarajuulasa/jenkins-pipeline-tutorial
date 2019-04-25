@@ -19,8 +19,8 @@ pipeline {
           steps {
         // Get SHA1 of current commit
         script {
-            commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-        }
+            commit_id = sh(script: "git rev-parse --short master", returnStdout: true).trim()
+        }master
         // Build the Docker image
         sh "docker build -t ${docker_repo_uri}:${commit_id} ."
         // Get Docker login credentials for ECR
