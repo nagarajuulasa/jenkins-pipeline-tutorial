@@ -16,11 +16,11 @@ pipeline {
     stages {
         // This is a stage.
         stage('Build') {
-          steps {
+    steps {
         // Get SHA1 of current commit
         script {
-            commit_id = sh(script:"git rev-parse --short HEAD",returnStdout:true).trim()
-        }master
+            commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
+        }
         // Build the Docker image
         sh "docker build -t ${docker_repo_uri}:${commit_id} ."
         // Get Docker login credentials for ECR
@@ -29,7 +29,7 @@ pipeline {
         sh "docker push ${docker_repo_uri}:${commit_id}"
         // Clean up
         sh "docker rmi -f ${docker_repo_uri}:${commit_id}"
-       }
+        }
       }
     }
 }
