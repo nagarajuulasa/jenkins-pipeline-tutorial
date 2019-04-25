@@ -2,7 +2,6 @@
 pipeline {
     // This line is required for declarative pipelines. Just keep it here.
     agent any
-
     // This section contains environment variables which are available for use in the
     // pipeline's stages.
     environment {
